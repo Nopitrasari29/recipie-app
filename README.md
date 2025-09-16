@@ -2,7 +2,7 @@
 
 **Recipie App** adalah aplikasi web resep masakan *full-stack* yang dibangun sebagai Capstone Project untuk program "Student Developer Initiative". Aplikasi ini tidak hanya berfungsi sebagai galeri resep, tetapi juga sebagai platform komunitas di mana pengguna dapat berbagi kreasi kuliner mereka sendiri, menyimpan resep favorit, dan memberikan ulasan.
 
-**[Lihat Demo Langsung Di Sini!](https://link-deployment-netlify-anda.app)** 
+**https://recipie-app-capstone.netlify.app/** 
 
 ---
 
