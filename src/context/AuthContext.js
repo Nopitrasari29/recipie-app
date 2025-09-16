@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { auth, db } from '../services/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-import { doc, getDoc, onSnapshot } from 'firebase/firestore'; // Import onSnapshot untuk real-time update
+// 'getDoc' telah dihapus dari baris import di bawah ini
+import { doc, onSnapshot } from 'firebase/firestore'; 
 
 const AuthContext = createContext();
 
@@ -11,18 +12,17 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
-  const [userData, setUserData] = useState(null); // State BARU untuk data pengguna (termasuk favorit)
+  const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Listener untuk status login (Authentication)
+    // Listener untuk status otentikasi Firebase
     const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
       
       if (user) {
-        // Jika user login, kita ambil datanya dari Firestore
+        // Jika pengguna login, buat listener real-time ke dokumen user mereka di Firestore
         const docRef = doc(db, 'users', user.uid);
-        // Listener BARU untuk data pengguna (Firestore) secara real-time
         const unsubscribeSnapshot = onSnapshot(docRef, (doc) => {
           if (doc.exists()) {
             setUserData(doc.data());
@@ -32,27 +32,26 @@ export function AuthProvider({ children }) {
         });
         
         setLoading(false);
-        // Kembalikan listener snapshot untuk di-cleanup
+        // Kembalikan listener snapshot agar bisa di-cleanup saat komponen unmount
         return unsubscribeSnapshot;
 
       } else {
-        // Jika user logout, reset semuanya
+        // Jika pengguna logout, reset semua data dan hentikan loading
         setUserData(null);
         setLoading(false);
       }
     });
 
-    // Cleanup listener otentikasi
+    // Cleanup listener otentikasi saat komponen unmount
     return unsubscribeAuth;
   }, []);
 
   const value = {
     currentUser,
-    userData, // Sediakan userData ke seluruh aplikasi
+    userData,
     loading
   };
 
-  // Jangan render aplikasi sampai status loading awal selesai
   return (
     <AuthContext.Provider value={value}>
       {!loading && children}

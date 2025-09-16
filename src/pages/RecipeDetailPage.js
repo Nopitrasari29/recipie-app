@@ -21,7 +21,6 @@ const RecipeDetailPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasReviewed, setHasReviewed] = useState(false);
 
-  // ===================== INI BAGIAN LOGIKA YANG TADI HILANG =====================
   const fetchRecipeAndReviews = useCallback(async () => {
     if (!recipeId) return;
     setLoading(true);
@@ -64,14 +63,20 @@ const RecipeDetailPage = () => {
       return;
     }
     setIsSubmitting(true);
+
     const recipeDocRef = doc(db, "recipes", recipeId);
     const reviewDocRef = doc(db, "recipes", recipeId, "reviews", currentUser.uid);
+
     try {
       await runTransaction(db, async (transaction) => {
         const recipeDoc = await transaction.get(recipeDocRef);
-        if (!recipeDoc.exists()) throw "Resep tidak ditemukan!";
+        // ======================= PERBAIKAN DI SINI =======================
+        if (!recipeDoc.exists()) throw new Error("Resep tidak ditemukan!"); // Diubah menjadi Error object
+        // ===============================================================
+
         const oldReviewCount = recipeDoc.data().reviewCount || 0;
         const oldAverageRating = recipeDoc.data().averageRating || 0;
+        
         const newReviewCount = oldReviewCount + 1;
         const newAverageRating = ((oldAverageRating * oldReviewCount) + userRating) / newReviewCount;
         
@@ -88,8 +93,10 @@ const RecipeDetailPage = () => {
           createdAt: new Date().toISOString()
         });
       });
+
       fetchRecipeAndReviews();
       setHasReviewed(true);
+
     } catch (error) {
       console.error("Gagal mengirim ulasan: ", error);
     } finally {
@@ -111,7 +118,6 @@ const RecipeDetailPage = () => {
         setTimeout(() => setCopySuccess(''), 3000);
       });
   };
-  // ===========================================================================
 
   if (loading) return <p className="status-message">Memuat detail resep...</p>;
   if (!recipe) return <p className="status-message">Resep tidak ditemukan.</p>;
