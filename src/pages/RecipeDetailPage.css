@@ -1,0 +1,204 @@
+.recipe-detail-container {
+  padding: 2.5rem;
+  background-color: var(--surface-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid #e9ecef;
+}
+
+.recipe-detail-title {
+  text-align: center;
+  font-size: 3.5rem;
+  margin-bottom: 2.5rem;
+  color: var(--primary-color);
+  line-height: 1.2;
+}
+
+.recipe-detail-image {
+  width: 100%;
+  height: 450px; /* Beri tinggi yang tetap */
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+  border: 1px solid #eee;
+  box-shadow: var(--shadow-md);
+}
+
+.recipe-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3.5rem;
+}
+
+.ingredients-section, .steps-section {
+  background-color: #fdfdfd;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+}
+
+.ingredients-section h2, .steps-section h2 {
+  font-size: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--accent-color);
+  margin-bottom: 1.5rem;
+  color: var(--secondary-color);
+}
+
+.ingredients-list, .steps-list {
+  padding-left: 1.5rem;
+}
+
+.ingredients-list li, .steps-list li {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+.steps-list li::marker {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+@media (max-width: 900px) {
+  .recipe-content-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .recipe-detail-title {
+    font-size: 2.8rem;
+  }
+}
+
+/* Membuat judul dan tombol sejajar */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--accent-color);
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+  margin-bottom: 0; /* Hapus margin bawah dari h2 */
+  border-bottom: none; /* Pindahkan border ke parent */
+  padding-bottom: 0.75rem;
+}
+
+/* Gaya untuk tombol "Salin Bahan" */
+.copy-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--secondary-color);
+  background-color: transparent;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+/* Gaya untuk pesan feedback */
+.copy-feedback {
+  background-color: #e7f4e8; /* Hijau muda */
+  color: #2d6a30; /* Hijau tua */
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+/* GAYA UNTUK RATING & ULASAN */
+.meta-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.reviews-section {
+  grid-column: 1 / -1; /* Buat section ini mengambil lebar penuh */
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.review-form {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.review-form h3 {
+  margin-top: 0;
+}
+
+.review-form .star-rating {
+  margin-bottom: 1rem;
+}
+
+.review-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  font-family: var(--font-body);
+}
+
+.review-form button {
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+}
+
+.feedback-message {
+  text-align: center;
+  font-weight: 500;
+  color: var(--secondary-color);
+  background-color: #f0f2f5;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.review-list .review-item {
+  border-bottom: 1px solid #eee;
+  padding: 1.5rem 0;
+}
+
+.review-list .review-item:last-child {
+  border-bottom: none;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.review-header strong {
+  font-size: 1.1rem;
+}

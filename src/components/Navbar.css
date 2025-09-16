@@ -1,0 +1,143 @@
+.navbar-header {
+  /* PERUBAHAN UTAMA: Ganti background menjadi warna primer */
+  background-color: var(--primary-color); 
+  padding: 0 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  /* Hapus bayangan karena sudah menyatu dengan hero section */
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.nav-brand {
+  font-family: var(--font-heading);
+  font-size: 1.8em;
+  font-weight: bold;
+  /* Ganti warna brand agar kontras dengan background gelap */
+  color: var(--surface-color); 
+  text-decoration: none;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  height: 100%;
+}
+
+.nav-menu li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item {
+  font-family: var(--font-body);
+  font-weight: 500; /* Sedikit lebih tipis agar elegan */
+  font-size: 1rem;
+  /* Ganti warna link agar kontras */
+  color: var(--secondary-color); 
+  text-decoration: none;
+  padding: 0 0.5rem;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  /* Ganti warna aksen garis bawah */
+  background-color: var(--accent-color); 
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover {
+  /* Warna saat hover menjadi putih */
+  color: var(--surface-color); 
+}
+
+.nav-item.active {
+  color: var(--surface-color);
+}
+
+.nav-item.active::after {
+  transform: scaleX(1);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-user {
+  font-weight: 600;
+  /* Ganti warna teks user */
+  color: var(--surface-color); 
+}
+
+/* Tombol Login (sekarang menjadi link biasa) */
+.nav-link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  /* Ganti warna link login */
+  color: var(--surface-color);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Efek hover halus */
+}
+
+/* Tombol Register & Logout (sekarang menjadi tombol aksen) */
+.nav-button {
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.register-btn {
+  /* Gunakan warna aksen Tan */
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  border-color: var(--accent-color);
+}
+
+.register-btn:hover {
+  background-color: #c9a882;
+  border-color: #c9a882;
+}
+
+.logout-btn {
+  background-color: transparent;
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.logout-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}

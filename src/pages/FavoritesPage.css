@@ -1,0 +1,43 @@
+/* =================================== */
+/* GAYA UNTUK HALAMAN FAVORIT          */
+/* =================================== */
+
+.favorites-page-container {
+  width: 100%;
+}
+
+/* 1. GAYA HEADER HALAMAN */
+/* Gaya ini disamakan dengan header di halaman lain untuk konsistensi */
+.page-header {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  margin-bottom: 3rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 12px;
+  background-image: 
+    linear-gradient(rgba(37, 52, 79, 0.95), rgba(37, 52, 79, 0.95)), 
+    url('https://www.transparenttextures.com/patterns/clean-textile.png');
+  box-shadow: var(--shadow-lg);
+}
+
+.page-header h1 {
+  color: white;
+  font-size: 3.2rem;
+}
+
+.page-header p {
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 2. GAYA UNTUK PESAN STATUS */
+/* Pesan yang muncul jika tidak ada resep favorit */
+.status-message {
+  text-align: center;
+  font-size: 1.2em;
+  padding: 40px;
+  color: var(--secondary-color);
+}

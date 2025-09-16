@@ -1,0 +1,106 @@
+.recipe-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.recipe-card {
+  background-color: var(--surface-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e9ecef;
+  position: relative; /* Diperlukan untuk overlay */
+}
+
+.recipe-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-image-background {
+  width: 100%;
+  padding-top: 66.66%; /* Aspect ratio 3:2 */
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(37, 52, 79, 0.7) 0%, rgba(37, 52, 79, 0) 50%);
+  /* Gradien dari warna Space Cadet ke transparan */
+}
+
+.recipe-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  text-align: left;
+  z-index: 2;
+  /* Kita pindahkan info resep ke atas gambar dengan overlay */
+}
+
+.recipe-info h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: white; /* Teks sekarang berwarna putih agar kontras */
+  line-height: 1.3;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Bayangan teks agar mudah dibaca */
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+/* GAYA UNTUK RATING DI CARD */
+.recipe-info {
+  /* Ubah flex-direction agar judul di bawah rating */
+  flex-direction: column;
+  align-items: flex-start; /* Rata kiri */
+  text-align: left;
+}
+
+.card-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+}
+
+.card-rating .star-rating.static {
+  font-size: 1rem;
+}

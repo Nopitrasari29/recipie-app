@@ -1,0 +1,19 @@
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: #ffc107; /* Warna bintang default */
+}
+
+.star-rating.static {
+  font-size: 1.2rem;
+}
+
+.star-rating.interactive input[type="radio"] {
+  display: none; /* Sembunyikan radio button asli */
+}
+
+.star-rating.interactive .star {
+  cursor: pointer;
+  transition: color 0.2s;
+}
